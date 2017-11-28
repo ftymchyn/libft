@@ -16,12 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <fcntl.h>
 
 # define MAX_LONG 9223372036854775807
 # define ABS(x) (x < 0 ? -x : x)
 # define IS_WHITESPACES(x) ((x >= 9 && x <= 13) || x == 32)
 # define IS_SPACES(x) (x == ' ' || x == '\n' || x == '\t')
 # define IS_NUMERIC(x) (x >= '0' && x <= '9')
+# define BUFF_SIZE 8192
 
 typedef struct		s_list
 {
@@ -103,7 +105,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_sqrt(int nb);
 int					ft_pow(int x, int pow);
-int					numcmp(long long num1, long long num2);
+int					get_next_line(const int fd, char **line);
 t_treemap			*btree_create_node
 					(void *key, size_t key_s, void *value, size_t value_s);
 void				btree_apply_prefix(t_treemap *root, void (*applyf)(void *));

@@ -30,7 +30,8 @@ SRCS	 = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		   ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 		   ft_sqrt.c ft_pow.c btree_create_node.c btree_apply_prefix.c\
 		   btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c \
-		   btree_get_node.c btree_get_value.c btree_delete_node.c
+		   btree_get_node.c btree_get_value.c btree_delete_node.c \
+		   get_next_line.c
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 
 all : $(NAME)
