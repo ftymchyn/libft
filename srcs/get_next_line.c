@@ -6,7 +6,7 @@
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 17:20:06 by ftymchyn          #+#    #+#             */
-/*   Updated: 2017/11/28 15:22:59 by ftymchyn         ###   ########.fr       */
+/*   Updated: 2017/12/06 13:05:19 by ftymchyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char		*get_line(t_treemap **root, int fd, char **res, char *buff)
 		node->value = (void*)ft_strjoin("", buff + getlinelen(buff) + 1);
 		btree_insert_node(root, node, cmpf);
 	}
-	free(tmp_len != buff_len ? buff : NULL);
+	free(tmp_len != buff_len || (!tmp[0] && !buff[0]) ? buff : NULL);
 	free(tmp);
 	return (tmp_len == buff_len ? NULL : result);
 }
