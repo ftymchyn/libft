@@ -33,6 +33,12 @@ typedef struct		s_list
 	struct s_list	*prev;
 }					t_list;
 
+typedef struct		s_stack
+{
+	struct s_stack	*next;
+	void			*data;
+}					t_stack;
+
 typedef struct		s_tmap
 {
 	struct s_tmap	*left;
@@ -119,4 +125,7 @@ void				*btree_get_value
 					(t_treemap *root, void *key, int (*cmpf)(void *, void *));
 void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
+t_stack				*stack_create_elem(void *data, size_t size);
+void				stack_push(t_stack **begin_stack, void *data);
+void				*stack_pop(t_stack **begin_stack);
 #endif
