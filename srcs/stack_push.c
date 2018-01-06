@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-void	stack_push(t_stack **begin_stack, void *data)
+void	stack_push(t_stack **begin_stack, void *data, size_t size)
 {
 	t_stack	*new;
 	t_stack	*head;
 
-	new = stack_create_elem(data, sizeof(*data));
+	new = stack_create_elem(data, size);
 	if (!new || !begin_stack)
 		return ;
 	if (*begin_stack)

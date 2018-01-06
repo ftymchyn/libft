@@ -126,6 +126,6 @@ void				*btree_get_value
 void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
 t_stack				*stack_create_elem(void *data, size_t size);
-void				stack_push(t_stack **begin_stack, void *data);
+void				stack_push(t_stack **begin_stack, void *data, size_t size);
 void				*stack_pop(t_stack **begin_stack);
 #endif
