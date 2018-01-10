@@ -128,4 +128,5 @@ void				*btree_delete_node
 t_stack				*stack_create_elem(void *data, size_t size);
 void				stack_push(t_stack **begin_stack, void *data, size_t size);
 void				*stack_pop(t_stack **begin_stack);
+void				*stack_unshift(t_stack **begin_stack);
 #endif
