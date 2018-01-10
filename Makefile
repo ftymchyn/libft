@@ -45,10 +45,9 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 
 clean :
 	@rm -f $(OBJS_DIR)*.o
-	@echo "$@ DONE"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$@ DONE"
+	@echo "$(NAME) $@ done"
 
 re: fclean all
