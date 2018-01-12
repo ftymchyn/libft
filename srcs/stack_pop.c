@@ -30,7 +30,7 @@ void		*stack_pop(t_stack **begin_stack)
 	t_stack	*prev;
 	void	*res;
 
-	if (begin_stack || *begin_stack)
+	if (begin_stack && *begin_stack)
 	{
 		head = *begin_stack;
 		if (check_head(!head->next, begin_stack, &res))

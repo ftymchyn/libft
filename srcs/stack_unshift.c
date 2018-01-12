@@ -18,7 +18,7 @@ void		*stack_unshift(t_stack **begin_stack)
 	t_stack	*next;
 	void	*res;
 
-	if (begin_stack || *begin_stack)
+	if (begin_stack && *begin_stack)
 	{
 		head = *begin_stack;
 		next = head->next;
