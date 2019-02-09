@@ -23,12 +23,14 @@ OBJS_DIR    = ./obj
 HEADERS     = libft.h
 HEADERS    := $(addprefix $(INCL_DIR)/, $(HEADERS))
 
-SRCS        = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c
-SRCS       += ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c
+#memory
+SRCS        = ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c
+SRCS       += ft_memchr.c ft_memcmp.c ft_memalloc.c ft_memdel.c
+SRCS       += ft_strlen.c ft_strdup.c ft_strcpy.c
 SRCS       += ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c
 SRCS       += ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c
 SRCS       += ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c
-SRCS       += ft_isprint.c ft_toupper.c ft_tolower.c ft_memalloc.c ft_memdel.c
+SRCS       += ft_isprint.c ft_toupper.c ft_tolower.c 
 SRCS       += ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c
 SRCS       += ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c
 SRCS       += ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c ft_putchar.c
@@ -39,11 +41,11 @@ SRCS       += ft_sqrt.c ft_pow.c btree_create_node.c btree_apply_prefix.c
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
 SRCS       += get_next_line.c stack_create_elem.c stack_pop.c stack_push.c
-SRCS       += stack_unshift.c
+SRCS       += stack_unshift.c ft_bzero.c
 
 OBJS        = $(SRCS:.c=.o)
 
-VPATH       = $(SRCS_DIR)
+VPATH       = $(SRCS_DIR) $(SRCS_DIR)/memory
 
 
 .PHONY: all clean fclean re
