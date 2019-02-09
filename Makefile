@@ -45,14 +45,14 @@ SRCS       += ft_lstmap.c
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
 SRCS       += btree_create_node.c btree_apply_prefix.c
-SRCS       += ft_itoa.c ft_putchar.c
-SRCS       += ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c
-SRCS       += ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
-SRCS       += ft_sqrt.c ft_pow.c get_next_line.c ft_atoi.c 
+#io
+SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
+SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
+SRCS       += ft_sqrt.c ft_pow.c ft_atoi.c ft_itoa.c 
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype stack list btree
+SRCS_SUBDIR = memory strings ctype stack list btree io
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR))
 
 
