@@ -50,11 +50,12 @@ SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
 #math
 SRCS       += ft_sqrt.c ft_pow.c
-SRCS       += ft_atoi.c ft_itoa.c 
+#conversions
+SRCS       += ft_atoi.c ft_ahextoi.c ft_itoa.c 
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype stack list btree io math
+SRCS_SUBDIR = memory strings ctype stack list btree io math conversions
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR)) $(OBJS_DIR)
 
 
