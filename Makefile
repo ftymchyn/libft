@@ -24,7 +24,7 @@ HEADERS     = libft.h
 HEADERS    := $(addprefix $(INCL_DIR)/, $(HEADERS))
 
 #memory
-SRCS        = ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c
+SRCS        = ft_memset.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_bzero.c
 SRCS       += ft_memchr.c ft_memcmp.c ft_memalloc.c ft_memdel.c
 #strings
 SRCS       += ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c
@@ -44,7 +44,7 @@ SRCS       += ft_sqrt.c ft_pow.c btree_create_node.c btree_apply_prefix.c
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
 SRCS       += get_next_line.c stack_create_elem.c stack_pop.c stack_push.c
-SRCS       += stack_unshift.c ft_bzero.c ft_atoi.c 
+SRCS       += stack_unshift.c ft_atoi.c 
 
 OBJS        = $(SRCS:.c=.o)
 
