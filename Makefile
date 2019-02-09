@@ -66,13 +66,14 @@ all         : $(NAME)
 
 $(NAME)     : $(OBJS_DIR) $(OBJS) $(HEADERS)
 	@$(MAKE_LIB) $(NAME) $(addprefix $(OBJS_DIR)/, $(OBJS))
-	@printf "\e[38;5;46m./$(NAME)   SUCCESSFUL BUILD 🖥\e[0m\n"
+	@printf "\n\e[38;5;46m./$(NAME)   SUCCESSFUL BUILD 🖥\e[0m\n"
 
 $(OBJS_DIR) :
 	mkdir $(OBJS_DIR)
 
 $(OBJS)     : %.o : %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $(OBJS_DIR)/$@ -I $(INCL_DIR)/
+	@$(CC) $(CFLAGS) -c $< -o $(OBJS_DIR)/$@ -I $(INCL_DIR)/
+	@printf "%-35s COMPILED 🖥\n" $<
 
 clean       :
 	rm -rf $(OBJS_DIR)
