@@ -48,12 +48,14 @@ SRCS       += btree_create_node.c btree_apply_prefix.c
 #io
 SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
-SRCS       += ft_sqrt.c ft_pow.c ft_atoi.c ft_itoa.c 
+#math
+SRCS       += ft_sqrt.c ft_pow.c
+SRCS       += ft_atoi.c ft_itoa.c 
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype stack list btree io
-VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR))
+SRCS_SUBDIR = memory strings ctype stack list btree io math
+VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR)) $(OBJS_DIR)
 
 
 .PHONY: all clean fclean re
