@@ -35,7 +35,9 @@ SRCS       += ft_strlen.c ft_strdup.c ft_strcpy.c ft_strjoin.c ft_strtrim.c
 SRCS       += ft_strsplit.c
 #ctype
 SRCS       += ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
-SRCS       += ft_toupper.c ft_tolower.c 
+SRCS       += ft_toupper.c ft_tolower.c
+#stack
+SRCS       += stack_create_elem.c stack_pop.c stack_push.c stack_unshift.c
 SRCS       += ft_itoa.c ft_putchar.c
 SRCS       += ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c
 SRCS       += ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c
@@ -43,12 +45,11 @@ SRCS       += ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c
 SRCS       += ft_sqrt.c ft_pow.c btree_create_node.c btree_apply_prefix.c
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
-SRCS       += get_next_line.c stack_create_elem.c stack_pop.c stack_push.c
-SRCS       += stack_unshift.c ft_atoi.c 
+SRCS       += get_next_line.c ft_atoi.c 
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype
+SRCS_SUBDIR = memory strings ctype stack
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR))
 
 
