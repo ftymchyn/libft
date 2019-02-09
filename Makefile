@@ -43,9 +43,7 @@ SRCS       += stack_unshift.c
 
 OBJS        = $(SRCS:.c=.o)
 
-LIB_FILES   = $(addprefix $(OBJS_DIR)/, $(OBJS))
-
-VPATH       = $(SRCS_DIR) $(OBJS_DIR)
+VPATH       = $(SRCS_DIR)
 
 
 .PHONY: all clean fclean re
@@ -54,7 +52,7 @@ VPATH       = $(SRCS_DIR) $(OBJS_DIR)
 all         : $(NAME)
 
 $(NAME)     : $(OBJS_DIR) $(OBJS) $(HEADERS)
-	@$(MAKE_LIB) $(NAME) $(LIB_FILES)
+	@$(MAKE_LIB) $(NAME) $(addprefix $(OBJS_DIR)/, $(OBJS))
 	@printf "\e[38;5;46m./$(NAME)   SUCCESSFUL BUILD 🖥\e[0m\n"
 
 $(OBJS_DIR) :
