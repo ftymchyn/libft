@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_llitoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftymchyn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	get_digits_len(int n)
+static int	get_digits_len(long long n)
 {
 	int len;
 
@@ -27,12 +27,12 @@ static int	get_digits_len(int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char		*ft_llitoa(long long n)
 {
-	unsigned int	tmp;
-	char			*res;
-	int				sign;
-	int				len;
+	unsigned long long	tmp;
+	char				*res;
+	int					sign;
+	int					len;
 
 	sign = n < 0 ? 1 : 0;
 	len = get_digits_len(n);
