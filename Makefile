@@ -51,7 +51,7 @@ SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
 #math
 SRCS       += ft_sqrt.c ft_pow.c
 #conversions
-SRCS       += ft_atoi.c ft_ahextoi.c ft_itoa.c 
+SRCS       += ft_atoi.c ft_ahextoi.c ft_llitoa.c 
 
 OBJS        = $(SRCS:.c=.o)
 
