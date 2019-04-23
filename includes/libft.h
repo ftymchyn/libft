@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <errno.h>
+# include <string.h>
 
 # define MAX_LONG 9223372036854775807
 # define ABS(x) (x < 0 ? -x : x)
@@ -112,7 +114,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_sqrt(int nb);
 int					ft_pow(int x, int pow);
-int					get_next_line(const int fd, char **line);
 t_treemap			*btree_create_node
 					(void *key, size_t key_s, void *value, size_t value_s);
 void				btree_apply_prefix(t_treemap *root, void (*applyf)(void *));
@@ -130,4 +131,7 @@ t_stack				*stack_create_elem(void *data, size_t size);
 void				stack_push(t_stack **begin_stack, void *data, size_t size);
 void				*stack_pop(t_stack **begin_stack);
 void				*stack_unshift(t_stack **begin_stack);
+
+int					get_next_line(const int fd, char **line);
+char				*read_file(const char *filename);
 #endif

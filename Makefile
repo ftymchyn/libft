@@ -48,7 +48,7 @@ SRCS       += btree_create_node.c btree_apply_prefix.c
 #io
 SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
-SRCS       += get_next_line.c
+SRCS       += get_next_line.c read_file.c
 #math
 SRCS       += ft_sqrt.c ft_pow.c
 #conversions
