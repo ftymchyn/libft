@@ -36,11 +36,6 @@ SRCS       += ft_strsplit.c
 #ctype
 SRCS       += ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
 SRCS       += ft_toupper.c ft_tolower.c
-#stack
-SRCS       += stack_create_elem.c stack_pop.c stack_push.c stack_unshift.c
-#list
-SRCS       += ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c
-SRCS       += ft_lstmap.c
 #btree
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
@@ -56,7 +51,7 @@ SRCS       += ft_atoi.c ft_ahextoi.c ft_llitoa.c ft_ullitoa_radix.c
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype stack list btree io math conversions
+SRCS_SUBDIR = memory strings ctype btree io math conversions
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR)) $(OBJS_DIR)
 
 
