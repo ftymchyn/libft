@@ -36,6 +36,14 @@ typedef struct		s_tmap
 	size_t			value_s;
 }					t_treemap;
 
+typedef struct		s_vector
+{
+	unsigned char	*data;
+	size_t			data_type_size;
+	size_t			capacity;
+	size_t			index_to_last;
+}					t_vector;
+
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -106,6 +114,16 @@ void				*btree_get_value
 					(t_treemap *root, void *key, int (*cmpf)(void *, void *));
 void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
+
+t_vector			*vector_create(size_t data_type_size);
+size_t				vector_size(t_vector *vec);
+void				vector_resize(t_vector *vec, size_t new_size);
+void				vector_insert(t_vector *vec, size_t index, void *data);
+void				vector_erase(t_vector *vec, size_t index, void *return_data);
+void				*vector_at(t_vector *vec, size_t index);
+void				vector_pushback(t_vector *vec, void *data);
+void				vector_foreach(t_vector *vec, void (*applyf)(void*));
+void				vector_clear(t_vector **vec, void (*destructf)(void*));
 
 int					get_next_line(const int fd, char **line);
 char				*read_file(const char *filename);

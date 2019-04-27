@@ -40,6 +40,10 @@ SRCS       += ft_toupper.c ft_tolower.c
 SRCS       += btree_apply_infix.c btree_apply_suffix.c btree_insert_node.c
 SRCS       += btree_get_node.c btree_get_value.c btree_delete_node.c
 SRCS       += btree_create_node.c btree_apply_prefix.c
+#vector
+SRCS       += vector_create.c vector_size.c vector_resize.c vector_clear.c
+SRCS       += vector_foreach.c vector_at.c vector_insert.c vector_pushback.c
+SRCS       += vector_erase.c
 #io
 SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
@@ -51,7 +55,7 @@ SRCS       += ft_atoi.c ft_ahextoi.c ft_llitoa.c ft_ullitoa_radix.c
 
 OBJS        = $(SRCS:.c=.o)
 
-SRCS_SUBDIR = memory strings ctype btree io math conversions
+SRCS_SUBDIR = memory strings ctype btree vector io math conversions
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR)) $(OBJS_DIR)
 
 
