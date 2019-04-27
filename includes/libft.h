@@ -88,6 +88,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+t_vector			*ft_strsplit_vec(const char *str, char c);
 char				*ft_llitoa(long long n);
 char				*ft_ullitoa_radix(unsigned long long n, int radix);
 void				ft_putchar(char c);

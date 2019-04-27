@@ -32,7 +32,7 @@ SRCS       += ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c
 SRCS       += ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c
 SRCS       += ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c
 SRCS       += ft_strlen.c ft_strdup.c ft_strcpy.c ft_strjoin.c ft_strtrim.c
-SRCS       += ft_strsplit.c
+SRCS       += ft_strsplit.c ft_strsplit_vec.c
 #ctype
 SRCS       += ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
 SRCS       += ft_toupper.c ft_tolower.c
