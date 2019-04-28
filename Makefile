@@ -51,7 +51,7 @@ SRCS       += get_next_line.c read_file.c
 #math
 SRCS       += ft_sqrt.c ft_pow.c
 #conversions
-SRCS       += ft_atoi.c ft_ahextoi.c ft_llitoa.c ft_ullitoa_radix.c
+SRCS       += ft_atoi.c ft_atof.c ft_ahextoi.c ft_llitoa.c ft_ullitoa_radix.c
 
 OBJS        = $(SRCS:.c=.o)
 
