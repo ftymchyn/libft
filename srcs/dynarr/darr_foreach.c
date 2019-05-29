@@ -1,15 +1,15 @@
 #include "libft.h"
 
-void	vector_foreach(t_vector *vec, void (*applyf)(void*))
+void	darr_foreach(t_darr *darr, void (*applyf)(void*))
 {
 	size_t i;
 
 	if (applyf)
 	{
 		i = 0;
-		while (i < vector_size(vec))
+		while (i < darr_size(darr))
 		{
-			(*applyf)(vector_at(vec, i));
+			(*applyf)(darr_at(darr, i));
 			i++;
 		}
 	}

@@ -36,13 +36,13 @@ typedef struct		s_tmap
 	size_t			value_s;
 }					t_treemap;
 
-typedef struct		s_vector
+typedef struct		s_darr
 {
 	unsigned char	*data;
 	size_t			data_type_size;
 	size_t			capacity;
 	size_t			index_to_last;
-}					t_vector;
+}					t_darr;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -89,7 +89,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-t_vector			*ft_strsplit_vec(const char *str, char c);
+t_darr				ft_strsplit_vec(const char *str, char c);
 char				*ft_llitoa(long long n);
 char				*ft_ullitoa_radix(unsigned long long n, int radix);
 void				ft_putchar(char c);
@@ -117,15 +117,15 @@ void				*btree_get_value
 void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
 
-t_vector			*vector_create(size_t data_type_size);
-size_t				vector_size(t_vector *vec);
-void				vector_resize(t_vector *vec, size_t new_size);
-void				vector_insert(t_vector *vec, size_t index, void *data);
-void				vector_erase(t_vector *vec, size_t index, void *return_data);
-void				*vector_at(t_vector *vec, size_t index);
-void				vector_pushback(t_vector *vec, void *data);
-void				vector_foreach(t_vector *vec, void (*applyf)(void*));
-void				vector_clear(t_vector **vec, void (*destructf)(void*));
+void				darr_init(t_darr *darr, size_t data_type_size);
+size_t				darr_size(t_darr *darr);
+void				darr_resize(t_darr *darr, size_t new_size);
+void				darr_insert(t_darr *darr, size_t index, void *data);
+void				darr_erase(t_darr *darr, size_t index, void *return_data);
+void				*darr_at(t_darr *darr, size_t index);
+void				darr_pushback(t_darr *darr, void *data);
+void				darr_foreach(t_darr *darr, void (*applyf)(void*));
+void				darr_clear(t_darr *darr, void (*destructf)(void*));
 
 int					get_next_line(const int fd, char **line);
 char				*read_file(const char *filename);

@@ -1,9 +1,9 @@
 #include "libft.h"
 
-void	vector_pushback(t_vector *vec, void *data)
+void	darr_pushback(t_darr *darr, void *data)
 {
-	if (vec)
+	if (darr)
 	{
-		vector_insert(vec, vec->index_to_last, data);
+		darr_insert(darr, darr->index_to_last, data);
 	}
 }

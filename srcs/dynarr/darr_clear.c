@@ -1,12 +1,12 @@
 #include "libft.h"
 
-void	vector_clear(t_vector **vec, void (*destructf)(void*))
+void	darr_clear(t_darr *darr, void (*destructf)(void*))
 {
-	if (vec && *vec)
+	if (darr)
 	{
 		if (destructf)
-			vector_foreach(*vec, destructf);
-		ft_memdel((void**)&((*vec)->data));
-		ft_memdel((void**)vec);
+			darr_foreach(darr, destructf);
+		free(darr->data);
+		ft_bzero(darr, sizeof(t_darr));
 	}
 }

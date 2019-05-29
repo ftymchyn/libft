@@ -13,20 +13,20 @@
 #include "libft.h"
 #include <stdio.h>
 
-t_vector	*ft_strsplit_vec(const char *str, char c)
+t_darr	ft_strsplit_vec(const char *str, char c)
 {
-	t_vector	*result;
-	char		**split;
-	int			i;
+	t_darr	result;
+	char	**split;
+	int		i;
 
-	result = vector_create(sizeof(char**));
+	darr_init(&result, sizeof(char**));
 	split = ft_strsplit(str,c);
 	i = 0;
 	if (split)
 	{
 		while (split[i])
 		{
-			vector_pushback(result, (void*)(split + i));
+			darr_pushback(&result, (void*)(split + i));
 			i++;
 		}
 		free(split);

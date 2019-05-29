@@ -1,18 +1,11 @@
 #include "libft.h"
 
-t_vector	*vector_create(size_t data_type_size)
+void	darr_init(t_darr *darr, size_t data_type_size)
 {
-	t_vector	*result;
-
-	result = (t_vector*)ft_memalloc(sizeof(t_vector));
-	if (result)
+	if (darr)
 	{
-		result->data_type_size = data_type_size;
-		vector_resize(result, 10);
-		if (!result->data)
-		{
-			vector_clear(&result, NULL);
-		}
+		ft_bzero(darr, sizeof(t_darr));
+		darr->data_type_size = data_type_size;
+		darr_resize(darr, 10);
 	}
-	return (result);
 }
