@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <stdarg.h>
 
 # define MAX_LONG 9223372036854775807
 # define ABS(x) (x < 0 ? -x : x)
@@ -100,6 +101,8 @@ void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+int					ft_printf(const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
 
 int					ft_sqrt(int nb);
 int					ft_pow(int x, int pow);

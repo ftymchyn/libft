@@ -46,7 +46,7 @@ SRCS       += darr_foreach.c darr_insert.c darr_pushback.c darr_erase.c
 #io
 SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c
-SRCS       += get_next_line.c read_file.c
+SRCS       += get_next_line.c read_file.c ft_printf.c
 #math
 SRCS       += ft_sqrt.c ft_pow.c
 #conversions
