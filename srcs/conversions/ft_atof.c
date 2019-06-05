@@ -12,8 +12,7 @@
 
 #include "libft.h"
 
-float	ft_atof(const char *str)
+double	ft_atof(const char *str)
 {
-	//TODO: implement atof
 	return (atof(str));
 }
