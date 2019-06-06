@@ -41,8 +41,8 @@ typedef struct		s_darr
 {
 	unsigned char	*data;
 	size_t			data_type_size;
+	size_t			size;
 	size_t			capacity;
-	size_t			index_to_last;
 }					t_darr;
 
 void				*ft_memset(void *b, int c, size_t len);
@@ -121,7 +121,6 @@ void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
 
 void				darr_init(t_darr *darr, size_t data_type_size);
-size_t				darr_size(t_darr *darr);
 void				darr_resize(t_darr *darr, size_t new_size);
 void				darr_insert(t_darr *darr, size_t index, void *data);
 void				darr_erase(t_darr *darr, size_t index, void *return_data);

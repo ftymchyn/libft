@@ -6,7 +6,7 @@ void	*darr_at(t_darr *darr, size_t index)
 	size_t	data_offset;
 
 	result = NULL;
-	if (index < darr_size(darr))
+	if (darr && index < darr->size)
 	{
 		data_offset = darr->data_type_size * index;
 		result = (void*)darr->data + data_offset;
