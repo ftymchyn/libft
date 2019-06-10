@@ -43,6 +43,7 @@ SRCS       += btree_create_node.c btree_apply_prefix.c
 #dynarr
 SRCS       += darr_init.c darr_resize.c darr_clear.c darr_at.c
 SRCS       += darr_foreach.c darr_insert.c darr_pushback.c darr_erase.c
+SRCS       += darr_last.c darr_create_last.c
 #io
 SRCS       += ft_putstr.c ft_putstr_fd.c ft_putendl.c ft_putendl_fd.c
 SRCS       += ft_putchar.c ft_putchar_fd.c ft_putnbr.c ft_putnbr_fd.c

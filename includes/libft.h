@@ -23,6 +23,8 @@
 
 # define MAX_LONG 9223372036854775807
 # define ABS(x) (x < 0 ? -x : x)
+# define MAX(x, y) (x < y ? y : x)
+# define MIN(x, y) (x < y ? x : y)
 # define IS_WHITESPACES(x) ((x >= 9 && x <= 13) || x == 32)
 # define IS_SPACES(x) (x == ' ' || x == '\n' || x == '\t')
 # define IS_NUMERIC(x) (x >= '0' && x <= '9')
@@ -125,6 +127,8 @@ void				darr_resize(t_darr *darr, size_t new_size);
 void				darr_insert(t_darr *darr, size_t index, void *data);
 void				darr_erase(t_darr *darr, size_t index, void *return_data);
 void				*darr_at(t_darr *darr, size_t index);
+void				*darr_last(t_darr *darr);
+void				*darr_create_last(t_darr *darr);
 void				darr_pushback(t_darr *darr, void *data);
 void				darr_foreach(t_darr *darr, void (*applyf)(void*));
 void				darr_clear(t_darr *darr, void (*destructf)(void*));
