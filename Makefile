@@ -59,10 +59,13 @@ SRCS_SUBDIR = memory strings ctype btree dynarr io math conversions
 VPATH       = $(SRCS_DIR) $(addprefix $(SRCS_DIR)/, $(SRCS_SUBDIR)) $(OBJS_DIR)
 
 
-.PHONY: all clean fclean re
+.PHONY: all build clean fclean re
 
 
-all         : $(NAME)
+all         :
+	$(MAKE) -j8 build
+
+build       : $(NAME)
 
 $(NAME)     : $(OBJS_DIR) $(OBJS) $(HEADERS)
 	@$(MAKE_LIB) $(NAME) $(addprefix $(OBJS_DIR)/, $(OBJS))

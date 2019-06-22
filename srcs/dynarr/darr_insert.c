@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	darr_insert(t_darr *darr, size_t index, void *data)
+void	darr_insert(t_darr *darr, int index, void *data)
 {
 	void	*src;
 	void	*dst;
@@ -8,7 +8,7 @@ void	darr_insert(t_darr *darr, size_t index, void *data)
 	if (darr && index <= darr->size)
 	{
 		if (darr->size == darr->capacity)
-			darr_resize(darr, (size_t)((double)darr->capacity * 1.5));
+			darr_resize(darr, (int)((double)darr->capacity * 1.5));
 		src = (void*)darr->data + darr->data_type_size * index;
 		dst = src + darr->data_type_size;
 		if (index < darr->size)

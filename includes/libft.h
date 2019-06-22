@@ -42,9 +42,9 @@ typedef struct		s_tmap
 typedef struct		s_darr
 {
 	unsigned char	*data;
-	size_t			data_type_size;
-	size_t			size;
-	size_t			capacity;
+	int				data_type_size;
+	int				size;
+	int				capacity;
 }					t_darr;
 
 void				*ft_memset(void *b, int c, size_t len);
@@ -122,11 +122,11 @@ void				*btree_get_value
 void				*btree_delete_node
 					(t_treemap **root, void *key, int (*cmpf)(void *, void *));
 
-void				darr_init(t_darr *darr, size_t data_type_size);
-void				darr_resize(t_darr *darr, size_t new_size);
-void				darr_insert(t_darr *darr, size_t index, void *data);
-void				darr_erase(t_darr *darr, size_t index, void *return_data);
-void				*darr_at(t_darr *darr, size_t index);
+void				darr_init(t_darr *darr, int data_type_size);
+void				darr_resize(t_darr *darr, int new_size);
+void				darr_insert(t_darr *darr, int index, void *data);
+void				darr_erase(t_darr *darr, int index, void *return_data);
+void				*darr_at(t_darr *darr, int index);
 void				*darr_last(t_darr *darr);
 void				*darr_create_last(t_darr *darr);
 void				darr_pushback(t_darr *darr, void *data);

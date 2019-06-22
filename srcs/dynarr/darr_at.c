@@ -1,9 +1,9 @@
 #include "libft.h"
 
-void	*darr_at(t_darr *darr, size_t index)
+void	*darr_at(t_darr *darr, int index)
 {
 	void	*result;
-	size_t	data_offset;
+	int		data_offset;
 
 	result = NULL;
 	if (darr && index < darr->size)

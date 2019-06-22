@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	darr_init(t_darr *darr, size_t data_type_size)
+void	darr_init(t_darr *darr, int data_type_size)
 {
 	if (darr)
 	{

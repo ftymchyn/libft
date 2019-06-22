@@ -2,7 +2,7 @@
 
 void	darr_foreach(t_darr *darr, void (*applyf)(void*))
 {
-	size_t i;
+	int i;
 
 	if (darr && applyf)
 	{

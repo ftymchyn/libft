@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	darr_erase(t_darr *darr, size_t index, void *return_data)
+void	darr_erase(t_darr *darr, int index, void *return_data)
 {
 	void	*src;
 	void	*dst;

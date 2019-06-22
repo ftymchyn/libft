@@ -1,9 +1,9 @@
 #include "libft.h"
 
-void	darr_resize(t_darr *darr, size_t new_size)
+void	darr_resize(t_darr *darr, int new_size)
 {
 	void	*ndata;
-	size_t	dsize;
+	int		dsize;
 
 	if (darr && darr->capacity != new_size)
 	{
