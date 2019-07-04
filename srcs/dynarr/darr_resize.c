@@ -9,7 +9,7 @@ void	darr_resize(t_darr *darr, int new_size)
 	{
 		dsize = darr->data_type_size;
 		if (new_size < darr->size)
-			new_size =  darr->size;
+			new_size = darr->size;
 		ndata = ft_memalloc(dsize * new_size);
 		if (ndata)
 		{
