@@ -12,106 +12,111 @@
 
 #include "libft.h"
 
-static int		cmpf(void *n1, void *n2)
+static int		substr_line(t_fbuff *b, char **line)
 {
-	int	num1;
-	int	num2;
+	int		result;
+	size_t	flen;
+	char	*fptr;
+	char	*tmpstr;
+	char	*substr;
 
-	num1 = *(int*)n1;
-	num2 = *(int*)n2;
-	if (num1 < num2)
-		return (-1);
-	else if (num1 > num2)
-		return (1);
-	return (0);
-}
-
-static size_t	getlinelen(char *str)
-{
-	char	*s;
-
-	s = ft_strchr(str, '\n');
-	if (!s)
-		return (ft_strlen(str));
-	return (s - str);
-}
-
-static int		search_saved_line(t_treemap **root, int fd, char **res)
-{
-	t_treemap	*node;
-	char		*s_buff;
-	size_t		len;
-	size_t		s_buff_len;
-
-	node = btree_get_node(*root, &fd, cmpf);
-	*res = NULL;
-	if (!node)
-		return (0);
-	s_buff = (char*)node->value;
-	s_buff_len = ft_strlen(s_buff);
-	len = getlinelen(s_buff);
-	*res = ft_strsub(s_buff, 0, len);
-	if (!*res)
-		return (-1);
-	node->value = ft_strjoin("", s_buff[len] ? s_buff + len + 1 : s_buff + len);
-	if (!node->value || !((char*)node->value)[0])
-		free(btree_delete_node(root, &fd, cmpf));
-	free(s_buff);
-	return (ft_strlen(*res) == s_buff_len ? 0 : 1);
-}
-
-static char		*get_line(t_treemap **root, int fd, char **res, char *buff)
-{
-	t_treemap	*node;
-	char		*result;
-	char		*tmp;
-	size_t		tmp_len;
-	size_t		buff_len;
-
-	tmp = ft_strsub(buff, 0, getlinelen(buff));
-	result = ft_strjoin(*res, tmp);
-	if (!tmp || !result)
-		return (*res);
-	free(*res);
-	tmp_len = ft_strlen(tmp);
-	buff_len = ft_strlen(buff);
-	if (tmp_len == buff_len)
-		*res = result;
-	else if (tmp_len != buff_len - 1)
+	if ((result = b->idx != b->len))
 	{
-		node = btree_create_node(&fd, sizeof(int), NULL, 0);
-		node->value = (void*)ft_strjoin("", buff + getlinelen(buff) + 1);
-		btree_insert_node(root, node, cmpf);
+		result = (NULL != (fptr = ft_strchr(b->str + b->idx, '\n')));
+		flen = result ?
+			(fptr - (b->str + b->idx)) : (b->str + b->len) - (b->str + b->idx);
+		tmpstr = *line;
+		substr = ft_strsub(b->str, b->idx, flen);
+		if (substr[flen - 1] == '\r')
+			substr[flen - 1] = '\0';
+		*line = ft_strjoin(tmpstr, substr);
+		ft_strdel(&tmpstr);
+		ft_strdel(&substr);
+		b->idx += (result ? flen + 1 : flen );
+		if (!result || b->idx == b->len)
+		{
+			b->idx = 0;
+			b->len = 0;
+		}
 	}
-	free(tmp_len != buff_len || (!tmp[0] && !buff[0]) ? buff : NULL);
-	free(tmp);
-	return (tmp_len == buff_len ? NULL : result);
+	return (result);
+}
+
+static t_fbuff	*get_fd_buffer(const int fd, t_darr **buffers)
+{
+	t_fbuff	*result;
+	int		i;
+
+	if (*buffers == NULL && (*buffers = ft_memalloc(sizeof(t_darr))))
+		darr_init(*buffers, sizeof(t_fbuff));
+	result = NULL;
+	i = 0;
+	while (*buffers && !result && i < (*buffers)->size)
+	{
+		result = (t_fbuff*)darr_at(*buffers, i);
+		if (result->fd != fd)
+			result = NULL;
+		i++;
+	}
+	if (*buffers && !result && (result = darr_create_last(*buffers)))
+	{
+		result->fd = fd;
+		result->str = (char*)ft_strnew(BUFF_SIZE);
+	}
+	return (result);
+}
+
+static void		clear_fd_buffer(const int fd, t_darr **buffers)
+{
+	t_fbuff	*buff;
+	int		i;
+
+	buff = NULL;
+	i = 0;
+	while (*buffers && i < (*buffers)->size)
+	{
+		buff = (t_fbuff*)darr_at(*buffers, i);
+		if (buff->fd == fd)
+		{
+			ft_strdel(&buff->str);
+			darr_erase(*buffers, i, NULL);
+			break;
+		}
+		i++;
+	}
+	if (*buffers && (*buffers)->size == 0)
+	{
+		darr_clear(*buffers, NULL);
+		ft_memdel((void**)buffers);
+	}
 }
 
 int				get_next_line(const int fd, char **line)
 {
-	static t_treemap	*root = NULL;
-	char				*buff;
-	char				*res;
-	int					ret;
+	static t_darr	*buffers = NULL;
+	t_fbuff			*buff;
+	char			*tmp;
+	int				result;
 
-	if (!line || (ret = search_saved_line(&root, (int)fd, &res)))
+	buff = get_fd_buffer(fd, &buffers);
+	tmp = NULL;
+	result = -1;
+	while (buff && buff->str && line && result < 0)
 	{
-		if (!line || ret == -1)
-			return (-1);
-		*line = res;
-		return (1);
+		if (0 == (result = substr_line(buff, &tmp)))
+		{
+			result = -1;
+			if (1 > (buff->len = read(fd, buff->str, BUFF_SIZE)) && tmp)
+				result = 1;
+			else if (buff->len == 0)
+				result = 0;
+			else if (buff->len == -1)
+				break ;
+		}
+		if (result != -1)
+			*line = tmp;
 	}
-	buff = ft_strnew(BUFF_SIZE);
-	while (buff && (ret = read(fd, buff, BUFF_SIZE)) != -1 && (ret || res))
-	{
-		buff[ret] = '\0';
-		*line = get_line(&root, fd, &res, buff);
-		if (!ret && res)
-			*line = res;
-		if (*line)
-			return (1);
-	}
-	free(buff);
-	return (buff ? ret : -1);
+	if (result != 1)
+		clear_fd_buffer(fd, &buffers);
+	return (result);
 }

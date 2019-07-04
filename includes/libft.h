@@ -39,6 +39,14 @@ typedef struct		s_tmap
 	size_t			value_s;
 }					t_treemap;
 
+typedef struct		s_fbuff
+{
+	int				fd;
+	char			*str;
+	int				idx;
+	int				len;
+}					t_fbuff;
+
 typedef struct		s_darr
 {
 	unsigned char	*data;
