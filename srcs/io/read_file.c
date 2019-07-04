@@ -11,19 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-static void	print_error(const char *filename, const char *e1, const char *e2)
-{
-	ft_putstr_fd(e1, 2);
-	ft_putstr_fd(e2, 2);
-	ft_putstr_fd(" \"", 2);
-	ft_putstr_fd(filename, 2);
-	ft_putendl_fd("\"", 2);
-}
+
 char		*read_file(const char *filename)
 {
 	char	*result;
 	char	*tmp;
-	char	buffer[BUFF_SIZE];
+	char	buffer[SBUFF_SIZE];
 	int		bytes;
 	int		fd;
 
@@ -31,7 +24,7 @@ char		*read_file(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd != -1)
 	{
-		while ((bytes = read(fd, buffer, BUFF_SIZE - 1)) > 0)
+		while ((bytes = read(fd, buffer, SBUFF_SIZE - 1)) > 0)
 		{
 			buffer[bytes] = '\0';
 			tmp = ft_strjoin(result, buffer);
@@ -39,9 +32,10 @@ char		*read_file(const char *filename)
 			result = tmp;
 		}
 		if (bytes == -1)
-			print_error(filename, "read() error : ", strerror(errno));
+			ft_dprintf(2,
+				"read() error : %s \"%s\"\n", strerror(errno), filename);
 	}
 	else
-		print_error(filename, "open() error : ", strerror(errno));
+	ft_dprintf(2, "open() error : %s \"%s\"\n", strerror(errno), filename);
 	return (result);
 }

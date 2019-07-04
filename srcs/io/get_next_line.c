@@ -61,7 +61,7 @@ static t_fbuff	*get_fd_buffer(const int fd, t_darr **buffers)
 	if (*buffers && !result && (result = darr_create_last(*buffers)))
 	{
 		result->fd = fd;
-		result->str = (char*)ft_strnew(BUFF_SIZE);
+		result->str = (char*)ft_strnew(DBUFF_SIZE);
 	}
 	return (result);
 }
@@ -106,7 +106,7 @@ int				get_next_line(const int fd, char **line)
 		if (0 == (result = substr_line(buff, &tmp)))
 		{
 			result = -1;
-			if (1 > (buff->len = read(fd, buff->str, BUFF_SIZE)) && tmp)
+			if (1 > (buff->len = read(fd, buff->str, DBUFF_SIZE)) && tmp)
 				result = 1;
 			else if (buff->len == 0)
 				result = 0;

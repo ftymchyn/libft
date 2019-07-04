@@ -28,7 +28,8 @@
 # define IS_WHITESPACES(x) ((x >= 9 && x <= 13) || x == 32)
 # define IS_SPACES(x) (x == ' ' || x == '\n' || x == '\t')
 # define IS_NUMERIC(x) (x >= '0' && x <= '9')
-# define BUFF_SIZE 8192
+# define SBUFF_SIZE (8192)
+# define DBUFF_SIZE (4194304)
 
 typedef struct		s_tmap
 {
